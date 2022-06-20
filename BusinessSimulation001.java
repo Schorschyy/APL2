@@ -11,22 +11,28 @@ public class BusinessSimulation001 {
 		
 		int spielen = 1;
 		int taler = 0;
+		Scanner myScanner = new Scanner(System.in);
 		
 		System.out.println("Wirtschaftssimulation Programmierung II");
 		
-		Niederlassung niederlassungEinbeck = new Niederlassung("Einbeck", Warenart.BIER, 1);
+		//Niederlassung niederlassungEinbeck = new Niederlassung("Einbeck", Warenart.BIER, 1);
 		
 		Lager lagerAugsburg = new Lager("Augsburg");
-		
-		/*ArrayList<Niederlassung> listeNiederlassung = new ArrayList<Niederlassung>();
-		listeNiederlassung.add(niederlassungEinbeck);*/
-		
-		
-		
+	
+		ArrayList<Niederlassung> listeNiederlassung = new ArrayList<Niederlassung>();
+		listeNiederlassung.add(new Niederlassung("Einbeck", Warenart.BIER, 1));
+		listeNiederlassung.add(new Niederlassung("Wien", Warenart.WEIN, 2));
+		listeNiederlassung.add(new Niederlassung("Nordhausen", Warenart.KORN, 2));
+		              
 				
 		do{
+			System.out.println("Produdktion hochfahren?");
+			String userinput = sc
+			for();
+			
 			niederlassungEinbeck.anfordern();
 			niederlassungEinbeck.produzieren();
+		
 			int produzierteMengeEinbeck = niederlassungEinbeck.abholen();
 			Warenart produzierteWarenart = niederlassungEinbeck.getWarenart();
 	
