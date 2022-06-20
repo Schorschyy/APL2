@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+
 public class BusinessSimulation001 {
 
 	public static void main(String[] args) {
@@ -27,44 +28,67 @@ public class BusinessSimulation001 {
 				
 		do{
 			System.out.println("Produdktion hochfahren?");
-			String userinput = sc
-			for();
+			String userInput = myScanner.nextLine();
 			
-			niederlassungEinbeck.anfordern();
-			niederlassungEinbeck.produzieren();
-		
-			int produzierteMengeEinbeck = niederlassungEinbeck.abholen();
-			Warenart produzierteWarenart = niederlassungEinbeck.getWarenart();
-	
-			System.out.println("Ort: "+niederlassungEinbeck.getOrt()+"\tWare: "
-					+niederlassungEinbeck.getWarenartString()+"\tMenge: "+produzierteMengeEinbeck);
+			if (userInput.equals("j")) {
+				for(int i = 0; i < listeNiederlassung.size(); i++) {
+					listeNiederlassung.get(i).anfordern();
+					listeNiederlassung.get(i).produzieren();
+				}
+			} 
+			
+			
+			// niederlassungEinbeck.anfordern();
+			// niederlassungEinbeck.produzieren();
+			
+			for(int i = 0; i < listeNiederlassung.size(); i++) {
+				int produzierteMenge = listeNiederlassung.get(i).abholen();
+				Warenart produzierteWarenart = listeNiederlassung.get(i).getWarenart();
 				
-			lagerAugsburg.einlagern(produzierteWarenart, produzierteMengeEinbeck);
+				System.out.println("Ort: "+listeNiederlassung.get(i).getOrt()+"\tWare: "
+					+produzierteWarenart+"\tMenge: "+produzierteMenge);
+				lagerAugsburg.einlagern(produzierteWarenart, produzierteMenge);
+			}
+			
+			//int produzierteMengeEinbeck = niederlassungEinbeck.abholen();
+			//Warenart produzierteWarenart = niederlassungEinbeck.getWarenart();
+	
+			//System.out.println("Ort: "+niederlassungEinbeck.getOrt()+"\tWare: "
+			//		+niederlassungEinbeck.getWarenartString()+"\tMenge: "+produzierteMengeEinbeck);
+				
+		
 	
 			System.out.println("Aktueller Bestand im Lager:");
 			for (Iterator<Warenart> warenartIterator = lagerAugsburg.getEingelagerteWaren().iterator(); warenartIterator.hasNext();) {
 				Warenart warenart = (Warenart) warenartIterator.next();
-				System.out.println(Util.convertWarenartToString(warenart)+": "+lagerAugsburg.getBestand(warenart));
+			
+				 System.out.println(Util.convertWarenartToString(warenart)+": "+lagerAugsburg.getBestand(warenart));
 			}
 			
 			
 			int verkaufsmenge;
 			Scanner menge_scanner = new Scanner(System.in);
 			
-			do {
-				System.out.println("Wieviel verkaufen?");
-				verkaufsmenge = menge_scanner.nextInt();
-			}while((verkaufsmenge<0)||(verkaufsmenge>lagerAugsburg.getBestand(niederlassungEinbeck.getWarenart())));
 			
+			for (Iterator<Warenart> warenartIterator = lagerAugsburg.getEingelagerteWaren().iterator(); warenartIterator.hasNext();) {
+				Warenart warenart = (Warenart) warenartIterator.next();
+				System.out.println(Util.convertWarenartToString(warenart)+": "+lagerAugsburg.getBestand(warenart));
 			
-			int preis = 10;
-			
-			int erloes = lagerAugsburg.verkaufen(produzierteWarenart,verkaufsmenge , preis);
-			
-			taler = taler + erloes;
-			
-			
-			System.out.println("Erl�s durch Verkauf: "+erloes);
+				do {
+					System.out.println("Wieviel verkaufen?");
+					verkaufsmenge = menge_scanner.nextInt();
+				}while((verkaufsmenge<0)||(verkaufsmenge>lagerAugsburg.getBestand(warenart)));
+				
+				
+				int preis = 10;
+				
+				int erloes = lagerAugsburg.verkaufen(warenart ,verkaufsmenge , preis);
+				
+				taler = taler + erloes;
+				
+				
+				System.out.println("Erl�s durch Verkauf: "+erloes);
+			}
 			System.out.println("Aktueller Bestand im Lager:");
 			
 			for (Iterator<Warenart> warenartIterator = lagerAugsburg.getEingelagerteWaren().iterator(); warenartIterator.hasNext();) {
