@@ -1,0 +1,15 @@
+package demo001;
+
+public class Fuhrpark {
+
+int anzahl_fuhrwerk = 1;
+int preis_fuhrwerk = 20;
+
+public void senden_fuhrwerk(){
+
+	System.out.println("Anzahl Fuhrwerke: " +anzahl_fuhrwerk);
+	System.out.println("Wieviel ");
+	
+	
+}
+}
