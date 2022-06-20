@@ -1,5 +1,6 @@
-package demo001.copy;
+package demo001;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -12,10 +13,18 @@ public class BusinessSimulation001 {
 		int taler = 0;
 		
 		System.out.println("Wirtschaftssimulation Programmierung II");
+		
 		Niederlassung niederlassungEinbeck = new Niederlassung("Einbeck", Warenart.BIER, 1);
+		
 		Lager lagerAugsburg = new Lager("Augsburg");
-			
-			do{
+		
+		/*ArrayList<Niederlassung> listeNiederlassung = new ArrayList<Niederlassung>();
+		listeNiederlassung.add(niederlassungEinbeck);*/
+		
+		
+		
+				
+		do{
 			niederlassungEinbeck.anfordern();
 			niederlassungEinbeck.produzieren();
 			int produzierteMengeEinbeck = niederlassungEinbeck.abholen();
@@ -49,7 +58,7 @@ public class BusinessSimulation001 {
 			taler = taler + erloes;
 			
 			
-			System.out.println("Erlös durch Verkauf: "+erloes);
+			System.out.println("Erlï¿½s durch Verkauf: "+erloes);
 			System.out.println("Aktueller Bestand im Lager:");
 			
 			for (Iterator<Warenart> warenartIterator = lagerAugsburg.getEingelagerteWaren().iterator(); warenartIterator.hasNext();) {
@@ -62,7 +71,7 @@ public class BusinessSimulation001 {
 			String weiterspielen;
 			Scanner spielen_scanner = new Scanner(System.in);
 			do {
-				System.out.println("Nächste Runde?");
+				System.out.println("Nï¿½chste Runde?");
 				weiterspielen = spielen_scanner.next();
 				
 				if( weiterspielen.equals ("j")) {
@@ -79,6 +88,8 @@ public class BusinessSimulation001 {
 				}
 				
 			}while(!(weiterspielen.equals("j")) && !(weiterspielen.equals ("n")));
+			
+			
 			
 		}while(spielen==1);
 		
