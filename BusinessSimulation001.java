@@ -47,7 +47,7 @@ public class BusinessSimulation001 {
 				
 				System.out.println("Ort: "+listeNiederlassung.get(i).getOrt()+"\tWare: "
 					+produzierteWarenart+"\tMenge: "+produzierteMenge);
-				lagerAugsburg.einlagern(produzierteWarenart, produzierteMenge);
+				lagerAugsburg.einlagern(produzierteWarenart, produzierteMenge); 
 			}
 			
 			//int produzierteMengeEinbeck = niederlassungEinbeck.abholen();
